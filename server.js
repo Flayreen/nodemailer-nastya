@@ -2,6 +2,7 @@ const express = require("express");
 require('dotenv').config()
 const mailConfig = require("./configs/mail-config");
 const mailSender = require("./send-mail/sender");
+const downloader = require("./download-cv/download")
 //
 const app = express();
 
@@ -12,6 +13,7 @@ app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
     next();
 });
+app.use("/download", downloader)
 
 
 
